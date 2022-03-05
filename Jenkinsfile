@@ -1,6 +1,8 @@
 pipeline {
     agent {
-        label 'terraform' 
+        node { 
+          label 'terraform'
+        }
     }
     tools {
         "org.jenkinsci.plugins.terraform.TerraformInstallation" "myterraform"
