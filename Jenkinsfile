@@ -1,7 +1,11 @@
 pipeline {
     agent {
         node { 
-          label 'terraform'
+          label 'terraform' 
+          customWorkspace '/home/jenkinsuser/terraform'
+        }
+    options 
+        { skipDefaultCheckout() 
         }
     }
     tools {
