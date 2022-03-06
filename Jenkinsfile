@@ -30,10 +30,15 @@ pipeline {
                 }
             }
         }
-
+        stage('TerraformFormat') {
+            dir(''/home/jenkinsuser/terraform/') {
+            sh "terraform fmt" 
+          }
+                }
+                }
         stage('TerraformPlan'){
             steps {
-                dir('/home/jenkinsuser/terraform/'){
+                dir(){
                     script {
                         try {
                             sh "terraform workspace new ${params.WORKSPACE}"
