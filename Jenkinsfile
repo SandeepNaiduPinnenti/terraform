@@ -5,7 +5,8 @@ pipeline {
           customWorkspace '/home/jenkinsuser/terraform'
         }
     options 
-        { skipDefaultCheckout() 
+        { 
+            skipDefaultCheckout() 
         }
     }
     tools {
