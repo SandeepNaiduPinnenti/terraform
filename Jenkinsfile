@@ -60,7 +60,7 @@ pipeline {
                             sh "terraform workspace select ${params.WORKSPACE}"
                         }
                         sh "terraform plan -var 'subscription_id=$SUBSCRIPTION_ID' -var 'client_id=$CLIENT_ID' -var 'client_secret=$CLIENT_SECRET' -var 'tenant_id=$TENANT_ID' \
-                        '-out terraform.tfplan;echo \$? > status"
+                        -out terraform.tfplan;echo \$? > status"
                         stash name: "terraform-plan", includes: "terraform.tfplan" , allowEmpty: false
                     }
                 }
