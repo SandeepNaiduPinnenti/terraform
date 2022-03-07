@@ -1,7 +1,9 @@
 pipeline {
     agent {
+        node {
           label 'terraform' 
           customWorkspace '/home/jenkinsuser/terraform'
+        }
     }
     options 
         { 
