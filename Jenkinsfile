@@ -2,11 +2,11 @@ pipeline {
     agent {
           label 'terraform' 
           customWorkspace '/home/jenkinsuser/terraform'
+    }
     options 
         { 
             skipDefaultCheckout() 
         }
-    }
     tools {
         "org.jenkinsci.plugins.terraform.TerraformInstallation" "myterraform"
     }
