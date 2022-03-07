@@ -3,8 +3,9 @@ pipeline {
         node {
           label 'terraform' 
           customWorkspace '/home/jenkinsuser/terraform'
-          skipDefaultCheckout  true
         }
+        options {
+              skipDefaultCheckout  true
     }
     tools {
         "org.jenkinsci.plugins.terraform.TerraformInstallation" "myterraform"
