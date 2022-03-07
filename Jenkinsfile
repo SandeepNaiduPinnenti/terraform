@@ -19,6 +19,10 @@ pipeline {
         TF_HOME = tool('myterraform')
         TF_LOG = "WARN"
         PATH = "$TF_HOME:$PATH"
+        SUBSCRIPTION_ID = credentials('subscription_id')
+        CLIENT_ID = credentials('client_id') 
+        CLIENT_SECRET = credentials('client_secret') 
+        TENANT_ID = credentials('tenant_id')
     }
     stages {
            stage('CloneSourceCodeIntoDIfferentDirectory') { 
@@ -55,7 +59,8 @@ pipeline {
                         } catch (err) {
                             sh "terraform workspace select ${params.WORKSPACE}"
                         }
-                        sh "terraform plan -out terraform.tfplan;echo \$? > status"
+                        sh "terraform plan -var 'subscription_id=$SUBSCRIPTION_ID' -var 'client_id=$CLIENT_ID' -var 'client_secret=$CLIENT_SECRET' -var 'tenant_id=$TENANT_ID' \
+                        '-out terraform.tfplan;echo \$? > status"
                         stash name: "terraform-plan", includes: "terraform.tfplan" , allowEmpty: false
                     }
                 }
