@@ -4,11 +4,11 @@ pipeline {
           label 'terraform' 
           customWorkspace '/home/jenkinsuser/terraform'
         }
-    }
     options 
         { 
             skipDefaultCheckout() 
         }
+    }
     tools {
         "org.jenkinsci.plugins.terraform.TerraformInstallation" "myterraform"
     }
@@ -28,7 +28,7 @@ pipeline {
            stage('CloneSourceCodeIntoDIfferentDirectory') { 
              steps { 
                dir('/home/jenkinsuser/terraform/') { 
-                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sandeep1197/terraform.git']]]) 
+                 checkout([$class: 'GitSCM', branches: [[name: 'refs/remotes/origin/develop']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sandeep1197/terraform.git']]])
                }
              }
             }
