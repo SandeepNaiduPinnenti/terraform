@@ -6,6 +6,7 @@ pipeline {
         }
         options {
               skipDefaultCheckout  true
+        }
     }
     tools {
         "org.jenkinsci.plugins.terraform.TerraformInstallation" "myterraform"
