@@ -3,11 +3,11 @@ pipeline {
         node {
           label 'terraform' 
           customWorkspace '/home/jenkinsuser/terraform'
+             }
         }
         options {
               skipDefaultCheckout  true
         }
-    }
     tools {
         "org.jenkinsci.plugins.terraform.TerraformInstallation" "myterraform"
     }
